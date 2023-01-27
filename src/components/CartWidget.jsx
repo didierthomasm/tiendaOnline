@@ -1,10 +1,13 @@
 import React from 'react';
 
-const CartWidget = () => {
+const CartWidget = ({ shoppingCount }) => {
     return (
         <>
-            <span className="material-symbols-outlined">
+            <span className="material-symbols-outlined" style={{color: 'white', fontSize: '2rem'}}>
                 shopping_cart
+            </span>
+            <span style={{color: 'white', fontSize: '1.1rem'}}>
+                {shoppingCount}
             </span>
         </>
     );
