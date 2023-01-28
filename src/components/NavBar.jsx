@@ -1,16 +1,12 @@
 import React from 'react';
 import CartWidget from "./CartWidget.jsx";
-import {Container, Flex, Spacer, Box, Heading, Input, InputGroup, InputRightAddon, Tabs, TabList, TabPanels, Tab, TabPanel} from '@chakra-ui/react'
-import {SearchIcon} from "@chakra-ui/icons";
+import {Container, Flex, Spacer, Box, Heading, Input, InputGroup, InputRightAddon} from '@chakra-ui/react'
+import {ChevronDownIcon, SearchIcon} from "@chakra-ui/icons";
 import {
     Menu,
     MenuButton,
     MenuList,
-    MenuItem,
-    MenuItemOption,
-    MenuGroup,
-    MenuOptionGroup,
-    MenuDivider,
+    MenuItem
 } from '@chakra-ui/react'
 
 const NavBar = ({  }) => {
@@ -38,24 +34,61 @@ const NavBar = ({  }) => {
                 </Flex>
                 <Flex  justifyContent='center'>
                     <Box>
-                        <Tabs variant='unstyled'>
-                            <TabList>
-                                <Tab _selected={{ color: 'white', bg: 'blue.500' }}>Nacional</Tab>
-                                <Tab _selected={{ color: 'white', bg: 'green.400' }}>Importada</Tab>
-                                <Tab _selected={{ color: 'white', bg: 'red.300' }}>Stuff</Tab>
-                            </TabList>
-                            <TabPanels>
-                                <TabPanel>
-                                    <p>Nacional</p>
-                                </TabPanel>
-                                <TabPanel>
-                                    <p>Importada</p>
-                                </TabPanel>
-                                <TabPanel>
-                                    <p>Stuff</p>
-                                </TabPanel>
-                            </TabPanels>
-                        </Tabs>
+                        <Menu>
+                            <MenuButton
+                                px={4}
+                                py={2}
+                                transition='all 0.2s'
+                                borderRadius='md'
+                                borderWidth='1px'
+                                _hover={{ bg: 'gray.400' }}
+                                _expanded={{ bg: 'blue.400' }}
+                                _focus={{ boxShadow: 'outline' }}
+                            >
+                                Nacionales <ChevronDownIcon />
+                            </MenuButton>
+                            <MenuList>
+                                <MenuItem>Por marca</MenuItem>
+                                <MenuItem>Por estílo</MenuItem>
+                            </MenuList>
+                        </Menu>
+                        <Menu>
+                            <MenuButton
+                                px={4}
+                                py={2}
+                                transition='all 0.2s'
+                                borderRadius='md'
+                                borderWidth='1px'
+                                _hover={{ bg: 'gray.400' }}
+                                _expanded={{ bg: 'blue.400' }}
+                                _focus={{ boxShadow: 'outline' }}
+                            >
+                                Importadas <ChevronDownIcon />
+                            </MenuButton>
+                            <MenuList>
+                                <MenuItem>Por marca</MenuItem>
+                                <MenuItem>Por estílo</MenuItem>
+                                <MenuItem>Por país</MenuItem>
+                            </MenuList>
+                        </Menu>
+                        <Menu>
+                            <MenuButton
+                                px={4}
+                                py={2}
+                                transition='all 0.2s'
+                                borderRadius='md'
+                                borderWidth='1px'
+                                _hover={{ bg: 'gray.400' }}
+                                _expanded={{ bg: 'blue.400' }}
+                                _focus={{ boxShadow: 'outline' }}
+                            >
+                                Stuff <ChevronDownIcon />
+                            </MenuButton>
+                            <MenuList>
+                                <MenuItem>Cristalería</MenuItem>
+                                <MenuItem>Ropa</MenuItem>
+                            </MenuList>
+                        </Menu>
                     </Box>
                 </Flex>
             </Container>
