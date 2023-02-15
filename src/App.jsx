@@ -1,26 +1,28 @@
-import {BrowserRouter, Route, Router, Routes} from 'react-router-dom'
-
-import NavBar from "./components/NavBar.jsx";
-import ItemListContainer from "./components/ItemListContainer.jsx";
-import ItemDetailContainer from "./components/ItemDetailContainer.jsx";
-import Cart from "./components/Cart.jsx";
-import Welcome from "./components/Welcome.jsx";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import ItemListContainer from "./components/ItemListContainer";
+import ItemDetailContainer from "./components/ItemDetailContainer";
+import NavBar from "./components/NavBar";
+import Welcome from "./components/Welcome";
+import Cart from "./components/Cart";
 
 function App() {
-
   return (
-  <BrowserRouter>
-    <NavBar />
+    <BrowserRouter>
+      <NavBar />
+      <Routes>
+        <Route exact path="/" element={<Welcome />} />
+        <Route exact path="/catalogue" element={<ItemListContainer />} />
+        <Route
+          exact
+          path="/category/:category"
+          element={<ItemListContainer />}
+        />
+        <Route exact path="/item/:id" element={<ItemDetailContainer />} />
 
-    <Routes>
-      <Route exact path='/' element={ <Welcome />} />
-      <Route exact path='/catalogue' element={ <ItemListContainer />} />
-      <Route exact path='/catalogue/:category' element={ <ItemListContainer />} />
-      <Route exact path='/item/:id' element={ <ItemDetailContainer />} />
-      <Route exact path='/cart' element={ <Cart />} />
-    </Routes>
-
-  </BrowserRouter>
+        <Route exact path="/cart" element={<Cart />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
-export default App
+
+export default App;

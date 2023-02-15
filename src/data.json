@@ -1,0 +1,58 @@
+[
+  {
+    "price": "$16.99",
+    "name": "Founders All Day IPA",
+    "description":
+    "IPA for all day.",
+    "rating": {
+      "average": 4.411243509154233,
+      "reviews": 453
+    },
+    "image": "https://cdn.nexternal.com/founders/images/All%20Day%20IPA%20Patch.jpg",
+    "id": 1,
+    "category": "Ale",
+    "stock": 3
+  },
+  {
+    "price": "$13.99",
+    "name": "Blue Moon Belgian White Belgian-Style Wheat Ale",
+    "description":
+    "For the hot and sunny days.",
+    "rating": {
+      "average": 4.775260833383482,
+      "reviews": 305
+    },
+    "image": "https://www.totalwine.com/media/sys_master/twmmedia/he8/h67/11931543830558.png",
+    "id": 2,
+    "category": "Ale",
+    "stock": 21
+  },
+  {
+    "price": "$16.99",
+    "name": "Guinness Extra Stout",
+    "description":
+    "If black ale are your thing.",
+    "rating": {
+      "average": 3.9785961474594638,
+      "reviews": 119
+    },
+    "image": "https://www.totalwine.com/media/sys_master/twmmedia/h50/h90/11996630056990.png",
+    "id": 3,
+    "category": "Stout",
+    "stock": 3
+  },
+  {
+    "price": "$29.99",
+    "name": "Founders CBS",
+    "description":
+    "When you know what you want.",
+    "rating": {
+      "average": 1.3498085290196702,
+      "reviews": 105
+    },
+    "image": "https://www.totalwine.com/media/sys_master/twmmedia/hfb/h90/10682638663710.png",
+    "id": 4,
+    "category": "Stout",
+    "stock": 10
+  }
+]

@@ -1,53 +1,56 @@
-import React, {useEffect, useState} from 'react';
+import ItemList from "./ItemList";
+import Data from "../data.json";
 import { useParams } from "react-router-dom";
-import ItemList from "./ItemList.jsx";
-
-const ItemListContainer = ({  }) => {
+import { Heading, Center } from "@chakra-ui/react";
+const ItemListContainer = () => {
   const { category } = useParams();
   console.log(category)
 
-  function getDataAle() {
-    const [data, setData] = useState("");
-    const getDataAle = async () => {
-      const resp = await fetch('https://api.sampleapis.com/beers/ale');
-      const json = await resp.json();
-      setData(json);
+  const getDatos = () => {
+    return new Promise((resolve, reject) => {
+      if (Data.length === 0) {
+        reject(new Error("No hay datos"));
+      }
+      setTimeout(() => {
+        resolve(Data);
+      }, 2000);
+    });
+  };
+
+  async function fetchingData() {
+    try {
+      const datosFetched = await getDatos();
+    } catch (err) {
+      console.log(err);
     }
-
-    useEffect(() => {
-      getDataAle();
-    }, []);
-
-    return (
-      data
-    )
   }
 
-   function getDataStout() {
-     const [data, setData] = useState("");
-     const getDataStout = async () => {
-       const resp = await fetch('https://api.sampleapis.com/beers/stout');
-       const json = await resp.json();
-       setData(json);
-     }
+  fetchingData();
 
-     useEffect(() => {
-       getDataStout();
-     }, []);
-
-     return (
-       data
-     )
-   }
-  console.log('Estas son las ales: ' , getDataAle())
-  // console.log('Estas son las stouts: ', getDataStout())
-  console.log('Tipo dato ales: ', typeof(getDataAle()))
+  if (category === undefined) {
     return (
-        <div>
-            <ItemList />
-
-        </div>
+      <div>
+        <Center bg="#D6EAF8" h="100px" color="black">
+          <Heading as="h2" size="2xl">
+            Beer Catalogue
+          </Heading>
+        </Center>
+        <ItemList beers={Data} />
+      </div>
     );
+  } else {
+    const catFilter = Data.filter((beer) => beer.category === category);
+    return (
+      <div>
+        <Center bg="#D6EAF8" h="100px" color="black">
+          <Heading as="h2" size="2xl">
+            Beers by Category
+          </Heading>
+        </Center>
+        {catFilter ? <ItemList beers={catFilter} /> : <ItemList beers={Data} />}
+      </div>
+    );
+  }
 };
 
 export default ItemListContainer;

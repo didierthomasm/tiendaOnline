@@ -1,116 +1,75 @@
-import React from 'react';
-import CartWidget from "./CartWidget.jsx";
-import {Container, Flex, Spacer, Box, Heading, Input, InputGroup, InputRightAddon} from '@chakra-ui/react'
-import {ChevronDownIcon, SearchIcon} from "@chakra-ui/icons";
+import React from "react";
+import { Link } from "react-router-dom";
+import CartWidget from "./CartWidget";
 import {
+  Flex,
+  Box,
+  Spacer,
+  Heading,
+  Container,
   Menu,
   MenuButton,
   MenuList,
-  MenuItem
-} from '@chakra-ui/react'
-import {Link} from "react-router-dom";
-
-const NavBar = ({  }) => {
+  MenuItem,
+  Button,
+  Avatar,
+} from "@chakra-ui/react";
+import { ChevronDownIcon } from "@chakra-ui/icons";
+const NavBar = () => {
   return (
     <>
-      <Container
-        className='nava-bar-container' display='flex' maxW='100rem' bg='green.200' color='#262626'
-        flexDirection='column' gap='1'
-      >
-        <Flex>
-          <Box p='2' color='white'>
-            <Heading size='md'>
-              <Link to={'/'}>Cheve...</Link>
+      <Container maxW="150rem" bg="blue.100" color="#262626">
+        <Flex alignItems="center" gap="2">
+          <Avatar
+            size="xl"
+            src="https://img.freepik.com/premium-photo/light-cold-beer-frosty-glass-isolated-white_185709-12.jpg?w=2000"
+          />
+          <Box p="10" w="300px" h="100">
+            <Heading size="md">
+              <Link to={"/"}>BeerStore</Link>
             </Heading>
           </Box>
           <Spacer />
           <Box>
-            <InputGroup>
-              <Input width='100%' placeholder='Encuentra tu cheve' />
-              <InputRightAddon  children={<SearchIcon color='green.500' />} />
-            </InputGroup>
-          </Box>
-          <Spacer />
-          <Box flexDirection='column' >
-            <CartWidget shoppingCount='0' />
-          </Box>
-        </Flex>
-        <Flex  justifyContent='center'>
-          <Box>
             <Menu>
-              <Link to={`/category/${'All'}`}>
+              <Link to={"/catalogue"}>
                 <MenuButton
-                  px={4}
-                  py={2}
-                  transition='all 0.2s'
-                  borderRadius='md'
-                  borderWidth='1px'
-                  _hover={{ bg: 'gray.400' }}
-                  _expanded={{ bg: 'blue.400' }}
-                  _focus={{ boxShadow: 'outline' }}
+                  as={Button}
+                  size="lg"
+                  variant="outline"
+                  colorScheme="blue"
+                  m="5"
                 >
-                  Todas
+                  Catalogue
                 </MenuButton>
               </Link>
             </Menu>
             <Menu>
               <MenuButton
-                px={4}
-                py={2}
-                transition='all 0.2s'
-                borderRadius='md'
-                borderWidth='1px'
-                _hover={{ bg: 'gray.400' }}
-                _expanded={{ bg: 'blue.400' }}
-                _focus={{ boxShadow: 'outline' }}
+                as={Button}
+                size="lg"
+                variant="outline"
+                colorScheme="blue"
+                rightIcon={<ChevronDownIcon />}
+                m="5"
               >
-                Por Estilo <ChevronDownIcon />
+                Categories
               </MenuButton>
-              <MenuList>
-                <Link to={`/category/${'Ale'}`}>
+              <MenuList className="menu-list">
+                <Link to={`/category/${"Ale"}`}>
                   <MenuItem>Ale</MenuItem>
                 </Link>
-                <Link to={`/category/${'Stout'}`}>
+                <Link to={`/category/${"Stout"}`}>
                   <MenuItem>Stout</MenuItem>
                 </Link>
               </MenuList>
             </Menu>
-            {/*<Menu>*/}
-            {/*  <MenuButton*/}
-            {/*    px={4}*/}
-            {/*    py={2}*/}
-            {/*    transition='all 0.2s'*/}
-            {/*    borderRadius='md'*/}
-            {/*    borderWidth='1px'*/}
-            {/*    _hover={{ bg: 'gray.400' }}*/}
-            {/*    _expanded={{ bg: 'blue.400' }}*/}
-            {/*    _focus={{ boxShadow: 'outline' }}*/}
-            {/*  >*/}
-            {/*    Por Precio <ChevronDownIcon />*/}
-            {/*  </MenuButton>*/}
-            {/*  <MenuList>*/}
-            {/*    <MenuItem>Menor a mayor</MenuItem>*/}
-            {/*    <MenuItem>Mayor a menor</MenuItem>*/}
-            {/*  </MenuList>*/}
-            {/*</Menu>*/}
-            {/*<Menu>*/}
-            {/*  <MenuButton*/}
-            {/*    px={4}*/}
-            {/*    py={2}*/}
-            {/*    transition='all 0.2s'*/}
-            {/*    borderRadius='md'*/}
-            {/*    borderWidth='1px'*/}
-            {/*    _hover={{ bg: 'gray.400' }}*/}
-            {/*    _expanded={{ bg: 'blue.400' }}*/}
-            {/*    _focus={{ boxShadow: 'outline' }}*/}
-            {/*  >*/}
-            {/*    Por Nombre <ChevronDownIcon />*/}
-            {/*  </MenuButton>*/}
-            {/*  <MenuList>*/}
-            {/*    <MenuItem>A a Z</MenuItem>*/}
-            {/*    <MenuItem>Z a A</MenuItem>*/}
-            {/*  </MenuList>*/}
-            {/*</Menu>*/}
+          </Box>
+          <Spacer />
+          <Box p="10" w="300px" h="100">
+            <Link to={"/cart"}>
+              <CartWidget />
+            </Link>
           </Box>
         </Flex>
       </Container>

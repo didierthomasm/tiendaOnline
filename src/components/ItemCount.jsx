@@ -1,73 +1,47 @@
-import React from 'react';
-import { useState } from 'react'
+import { useState } from "react";
+import {
+  Text,
+  ButtonGroup,
+  IconButton,
+  Tooltip,
+  Center,
+} from "@chakra-ui/react";
+import { AddIcon, MinusIcon } from "@chakra-ui/icons";
 
-import {Box, Button, ButtonGroup, Container} from '@chakra-ui/react'
-// import itemListContainer from "./ItemListContainer.jsx";
-// import onAdd from "./ItemListContainer"
-//
-// onAdd(2)
-// const ItemCount = ({ stock, initial, onAdd }) => {
-//   return (
-//     <>
-//       <Container>
-//         <Box>
-//           <ButtonGroup variant='outline' spacing='6'>
-//             <Button colorScheme='teal' variant='outline' onClick={onAdd}>
-//               -
-//             </Button>
-//             <p>{add}</p>
-//             <Button colorScheme='teal' variant='outline' onClick={sumar}>
-//               +
-//             </Button>
-//           </ButtonGroup>
-//         </Box>
-//       </Container>
-//     </>
-//   );
-// };
-//
-//
-// export default ItemCount;
-//
-//
-const addOn = ({ stock }) => {
+const ItemCount = ({ stock }) => {
+  const [count, setCount] = useState(1);
 
-  const [add, setAdd] = useState(1);
-
-  const sumar = () => {
-    if(add !== stock){
-      setAdd(add + 1)
-    }else {
-
-    }
+  const onAdd = () => {
+    setCount(count + 1);
   };
 
-  const restar = () => {
-    if (add === 0) {
-
-    }else {
-      setAdd(add - 1)
-    }
+  const onSubstract = () => {
+    setCount(count - 1);
   };
-
 
   return (
     <>
-      <Container>
-        <Box>
-          <ButtonGroup variant='outline' spacing='6'>
-            <Button colorScheme='teal' variant='outline' onClick={restar}>
-              -
-            </Button>
-            <p>{add}</p>
-            <Button colorScheme='teal' variant='outline' onClick={sumar}>
-              +
-            </Button>
-          </ButtonGroup>
-        </Box>
-      </Container>
+      <ButtonGroup size="sm" isAttached variant="outline">
+        {count < 1 ? (
+          <Tooltip label="minimum stock reached" placement="bottom">
+            <IconButton icon={<MinusIcon />} isDisabled />
+          </Tooltip>
+        ) : (
+          <IconButton icon={<MinusIcon />} onClick={onSubstract} />
+        )}
+        <Center w="50px" h="30px">
+          <Text as="b">{count}</Text>
+        </Center>
+        {count < stock ? (
+          <IconButton icon={<AddIcon />} onClick={onAdd} />
+        ) : (
+          <Tooltip label="stock limit reached" placement="bottom">
+            <IconButton icon={<AddIcon />} isDisabled />
+          </Tooltip>
+        )}
+      </ButtonGroup>
     </>
   );
 };
 
-export default addOn;
+export default ItemCount;

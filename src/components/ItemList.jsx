@@ -1,12 +1,8 @@
-import React from 'react';
-
-import Item from "./Item.jsx";
-
+import Item from "./Item";
 import { Container } from "@chakra-ui/react";
-
 const ItemList = ({ beers }) => {
   return (
-    <div>
+    <>
       <Container maxW="container.sm" className="main-catalogue">
         {beers?.map((beer) => (
           <Item
@@ -16,12 +12,12 @@ const ItemList = ({ beers }) => {
             description={beer.description}
             price={beer.price}
             stock={beer.stock}
+            category={beer.category}
             image={beer.image}
-            rating={beer.rating}
           />
         ))}
       </Container>
-    </div>
+    </>
   );
 };
 
